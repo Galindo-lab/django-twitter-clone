@@ -9,7 +9,10 @@
             <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
                 <img class="card-img-top rounded-circle"
                     style="width:60%; position: relative;left: 62px;padding-top: 20px;"
-                    src="https://i.pinimg.com/736x/ea/f2/2e/eaf22e6a189f76ed24054e2ca7feb00f.jpg" alt="Card image cap">
+                    src="{{ request.user.profile.image.url }}"
+                     alt="Card image cap"
+                >
+                
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold">{{request.user.first_name}}</h5>
                     <h6 class="card-title font-weight-bold">@{{request.user}}</h6>
@@ -38,7 +41,7 @@
             <div class="d-flex">
                 <div class="col-xs">
                     <!-- Image form -->
-                    <img src="https://i.pinimg.com/736x/ea/f2/2e/eaf22e6a189f76ed24054e2ca7feb00f.jpg" alt=""
+                    <img src="{{ request.user.profile.image.url }}" alt=""
                         class="avator">
                     <!-- Formulario -->
                 </div>
@@ -75,7 +78,7 @@
             <!-- FOR LOOP HERE -->
             <div class="tweet-wrap" style="border-radius:20px">
                 <div class="tweet-header">
-                    <img src="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+                    <img src="{{post.user.profile.image.url}}"
                         alt="" class="avator">
                     <div class="tweet-header-info">
                         {{post.user.first_name}} <span> @{{post.user}} </span><span>{{post.timestamp|naturaltime}}
