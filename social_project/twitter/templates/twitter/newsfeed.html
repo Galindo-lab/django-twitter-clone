@@ -44,8 +44,11 @@
                 </div>
 
                 <!-- Formulario -->
-                <form class="col pr-0">
-                    <textarea class="form-control w-100" id="contentsBox" placeholder="What's happening?"></textarea>
+                <form class="col pr-0" method="post">
+                    {% csrf_token %}
+                    
+                    {{form.content}}
+
                     <div class="container d-flex" style="padding: 1rem 0 0 0;">
                         <div id="leftBtn">
                             <div id="charBadge" class="badge badge-pill badge-primary ml-2"
