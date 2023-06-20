@@ -16,7 +16,7 @@ def home(request):
             post.user = request.user
             post.save()
             return redirect('home')
-        
+
     else:
         form = PostForm()
 
@@ -39,3 +39,9 @@ def register(request):
         return render(request, 'twitter/register.html', {
             'form': UserRegisterForm()
         })
+
+
+def delete(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return redirect('home')
