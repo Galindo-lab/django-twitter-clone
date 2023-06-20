@@ -22,6 +22,10 @@
                 {{form.password}}
             </div>
 
+            {% if form.errors %}
+            <p>Usuario o contraseña invalidos</p>
+            {% endif %}
+
             <button class="twitter-btn">Log in</button>
         </form>
 
