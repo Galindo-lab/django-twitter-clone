@@ -27,9 +27,15 @@
                 </div>
 
             </div>
-            <button id="addATweetLeft" onclick="addTweet()" type="button"
+            <a 
+                href="{% url 'editar' %}"
+                id="addATweetLeft" 
+                onclick="addTweet()" 
+                type="button"
                 style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
-                class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</button>
+                class="btn btn-lg btn-block mt-4 text-white ">
+                Editar mi perfil
+            </a>
         </div>
     </div>
     <!-- End Barra Izquierda -->
@@ -80,8 +86,9 @@
                 <div class="tweet-header">
                     <img src="{{post.user.profile.image.url}}"
                         alt="" class="avator">
-                    <div class="tweet-header-info">
-                        {{post.user.first_name}} <span> @{{post.user}} </span><span>{{post.timestamp|naturaltime}}
+                    <div class="tweet-header-info" >
+                        <a href="{% url 'profile' post.user %}">{{post.user.first_name}} </a>
+                        <span> @{{post.user}} </span><span>{{post.timestamp|naturaltime}}
                         </span>
                         <p>{{post.content}}</p>
                     </div>
