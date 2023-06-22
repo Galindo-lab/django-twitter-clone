@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Profile, Post
+from . models import Profile, Post, Relationship
 from . forms import UserRegisterForm, PostForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.models import User
 
@@ -75,6 +75,7 @@ def editar(request):
             u_form.save()
             p_form.save()
             return redirect('home')
+
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm()
@@ -83,3 +84,14 @@ def editar(request):
         'u_form': u_form,
         'p_form': p_form
     })
+
+def follow(request, username):
+    current_user = request.user
+    to_user = User.objects.get(username=username)
+    to_user_id = to_user
+
+    rel = Relationship(from_user=current_user, to_user=to_user_id)
+    rel.save()
+
+    return redirect('home')
+

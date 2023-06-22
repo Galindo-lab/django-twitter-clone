@@ -18,9 +18,11 @@
 
                     <p class="card-text">{{user.profile.bio}}</p>
                     <h6 class="card-title font-weight-bold">
-                        100 Followers
-                        100 Following
+                        {{ user.profile.followers.count }} Followers   
+                        {{ user.profile.following.count }} Following
                     </h6>
+
+                    <a href="{% url 'follow' user %}" class="btn  text-white rounded-pill">Seguir</a>
                 </div>
 
             </div>
