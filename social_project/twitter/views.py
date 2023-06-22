@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from . models import Profile, Post, Relationship
 from . forms import UserRegisterForm, PostForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def home(request):
     posts = Post.objects.all()
 
@@ -41,12 +42,11 @@ def register(request):
             'form': UserRegisterForm()
         })
 
-
+@login_required
 def delete(request, post_id):
     post = Post.objects.get(id=post_id)
     post.delete()
     return redirect('home')
-
 
 def profile(request, username):
     user = User.objects.get(username=username)
@@ -57,7 +57,7 @@ def profile(request, username):
         'posts': posts
     })
 
-
+@login_required
 def editar(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(
@@ -85,7 +85,7 @@ def editar(request):
         'p_form': p_form
     })
 
-
+@login_required
 def follow(request, username):
     current_user = request.user
     to_user = User.objects.get(username=username)
@@ -96,7 +96,7 @@ def follow(request, username):
 
     return redirect('home')
 
-
+@login_required
 def unfollow(request, username):
     current_user = request.user
     to_user = User.objects.get(username=username)
