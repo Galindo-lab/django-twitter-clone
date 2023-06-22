@@ -18,13 +18,12 @@ class Profile(models.Model):
             .values_list('to_user_id', flat=True)
 
         return User.objects.filter(id__in=user_ids)
-    
+
     def followers(self):
         user_ids = Relationship.objects.filter(to_user=self.user)\
             .values_list('from_user_id', flat=True)
 
         return User.objects.filter(id__in=user_ids)
-
 
 
 class Post(models.Model):
